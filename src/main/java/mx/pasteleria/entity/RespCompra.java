@@ -1,18 +1,21 @@
 package mx.pasteleria.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "RESPALMACEN")
-public class RespAlmacen {
+@Table(name = "RESPCOMPRAS")
+public class RespCompra {
 	@Id
-	@Column(name = "id_respalmacen")
-	private Integer idRespAlmacen;
+	@Column(name = "id_respcompra")
+	private Integer idRespCompra;
 
 	@Column(name = "nombre")
 	private String nombre;
@@ -30,19 +33,19 @@ public class RespAlmacen {
 	@JoinColumn(name = "username")
 	private Usuario usuario;
 	
-	@OneToOne(mappedBy = "respAlmacen")
-	private Almacen almacen;
+	@OneToMany(mappedBy = "respCompra")
+	private List<OrdCompra> ordCompra;
 
-	public RespAlmacen() {
+	public RespCompra() {
 		super();
 	}
 
-	public Integer getIdRespAlmacen() {
-		return idRespAlmacen;
+	public Integer getIdRespCompra() {
+		return idRespCompra;
 	}
 
-	public void setIdRespAlmacen(Integer idRespAlmacen) {
-		this.idRespAlmacen = idRespAlmacen;
+	public void setIdRespCompra(Integer idRespCompra) {
+		this.idRespCompra = idRespCompra;
 	}
 
 	public String getNombre() {
@@ -85,11 +88,11 @@ public class RespAlmacen {
 		this.usuario = usuario;
 	}
 
-	public Almacen getAlmacen() {
-		return almacen;
+	public List<OrdCompra> getOrdCompra() {
+		return ordCompra;
 	}
 
-	public void setAlmacen(Almacen almacen) {
-		this.almacen = almacen;
+	public void setOrdCompra(List<OrdCompra> ordCompra) {
+		this.ordCompra = ordCompra;
 	}
 }

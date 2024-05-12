@@ -1,17 +1,20 @@
 package mx.pasteleria.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "RESPALMACEN")
-public class RespAlmacen {
+@Table(name = "RESPPRODUCCION")
+public class RespProduccion {
 	@Id
-	@Column(name = "id_respalmacen")
+	@Column(name = "id_respproduccion")
 	private Integer idRespAlmacen;
 
 	@Column(name = "nombre")
@@ -30,10 +33,10 @@ public class RespAlmacen {
 	@JoinColumn(name = "username")
 	private Usuario usuario;
 	
-	@OneToOne(mappedBy = "respAlmacen")
-	private Almacen almacen;
+	@OneToMany(mappedBy = "respProduccion")
+	private List<OrdProd> ordProd;
 
-	public RespAlmacen() {
+	public RespProduccion() {
 		super();
 	}
 
@@ -85,11 +88,11 @@ public class RespAlmacen {
 		this.usuario = usuario;
 	}
 
-	public Almacen getAlmacen() {
-		return almacen;
+	public List<OrdProd> getOrdProd() {
+		return ordProd;
 	}
 
-	public void setAlmacen(Almacen almacen) {
-		this.almacen = almacen;
+	public void setOrdProd(List<OrdProd> ordProd) {
+		this.ordProd = ordProd;
 	}
 }
