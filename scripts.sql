@@ -2,7 +2,7 @@
 -- Author: threeyeies
 -- Description: Script to create the database tables
 -- Version: 1.0
--- WARNING! names of foreign keys was not stablish as a not null column in these scripts, after was be fixed configuring as a not null column in pgAdmin4, consider it for use the following scripts
+-- WARNING! names of foreign keys already was stablish as a not null column
 CREATE TABLE USUARIO (USERNAME VARCHAR(10) PRIMARY KEY, TIPO VARCHAR(15) NOT NULL, PASSWORD VARCHAR(25) NOT NULL);
 CREATE TABLE RESPCOMPRAS (ID_RESPCOMPRAS SERIAL PRIMARY KEY, NOMBRE VARCHAR(50) NOT NULL, CARGO VARCHAR(30) NOT NULL, TEL VARCHAR(13) NOT NULL, TURNO VARCHAR(10) NOT NULL, USERNAME VARCHAR(10) REFERENCES USUARIO (USERNAME) NOT NULL);
 CREATE TABLE RESPPRODUCCION (ID_RESPPRODUCCION SERIAL PRIMARY KEY, NOMBRE VARCHAR(50) NOT NULL, CARGO VARCHAR(30) NOT NULL, TEL VARCHAR(13) NOT NULL, TURNO VARCHAR(10) NOT NULL, USERNAME VARCHAR(10) REFERENCES USUARIO (USERNAME) NOT NULL);
